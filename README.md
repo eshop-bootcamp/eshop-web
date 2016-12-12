@@ -13,6 +13,7 @@ You need NodeJS and yarn to be installed.
 
     $ brew install node
     $ brew install yarn
+    $ npm install -g webpack-dev-server
 
 And, then within the project folder, try the following commands 
 
