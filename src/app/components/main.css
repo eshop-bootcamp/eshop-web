@@ -1,0 +1,23 @@
+.main{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.headerBar{
+    flex: 1;
+}
+.footer{
+    flex: 1;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.contentArea{
+    flex: 8;
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
