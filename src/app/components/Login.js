@@ -28,16 +28,16 @@ class Login extends Component {
                     <Subheader inset={true}>Login</Subheader>
                     <div className={loginStyle.loginForm}>
                         <div className={loginStyle.loginFormField}>
-                            <TextField
+                            <TextField id="username"
                                 floatingLabelText="Username"
                             />
                         </div>
                         <div className={loginStyle.loginFormField}>
-                            <TextField
+                            <TextField id="password"
                             floatingLabelText="Password"
                             />
                         </div>
-                        <RaisedButton label="Login" secondary={true} />
+                        <RaisedButton id="login_button" label="Login" secondary={true} />
 
                     </div>
                 </Paper>
