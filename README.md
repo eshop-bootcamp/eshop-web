@@ -4,7 +4,15 @@
 
  * [ReactJS](https://facebook.github.io/react/) 
  * [MaterialUI](http://www.material-ui.com/) 
- * [WebPack](http://webpack.github.io/) 
+ * [WebPack](http://webpack.github.io/)
+ * [Fetch](https://github.com/github/fetch) 
+
+#### For Testing
+ * [Mocha](https://mochajs.org/)
+ * [Chai](http://chaijs.com/)
+ * [Enzyme](https://github.com/airbnb/enzyme)
+ * [Chai-Enzyme](https://github.com/producthunt/chai-enzyme)   
+    
 
 
 ### Setup
