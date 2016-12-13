@@ -27,7 +27,6 @@ export default class LandingPageBuyer extends React.Component {
     }
 
     handleChange (event, index, value) {
-        console.log('handle change');
         this.setState({ value });
         alert('ID ' + value + ' redirect to items list page');
     }
