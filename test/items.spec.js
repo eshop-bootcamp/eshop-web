@@ -2,20 +2,54 @@ import React from 'react';
 import {shallow, mount} from 'enzyme';
 import Subheader from 'material-ui/Subheader';
 import Items from '../src/app/components/Items';
+import Item from '../src/app/components/Item';
+
+let wrapper;
 
 describe('<Items />', () => {
+    beforeEach(() => {
+        wrapper = shallow(<Items/>);
+    });
+
     it('should render properly', () => {
-        const wrapper = shallow(<Items/>);
         expect(wrapper).to.exist;
     });
 
     it('should have the word category in its title', () => {
-        const wrapper = shallow(<Items/>);
         expect(wrapper.find(Subheader).node.props.children).to.contain('Category');
     });
+});
 
-/*    it('should have at least one item on the page', () => {
-        const wrapper = shallow(<Items />);
-        expect(wrapper.find(items).node.props.children).to.contain.text('');
-    }); */
+describe('<Items />', () => {
+    beforeEach(() => {
+        wrapper = shallow(<Items/>);
+    });
+
+    it('renders null based on initial state', () => {
+        expect(wrapper.state().items.length).to.equal(0);
+    });
+
+    it('renders two Item components as children when state is set', () => {
+        wrapper.setState({items : [
+            {
+                name: "iPhone 6S",
+                description: "Some Apple phone",
+                price: "Rs. 70000"
+            },
+            {
+                name: "Samsung Galaxy S7",
+                description: "Featuring exploding batteries",
+                price: "Rs. 69999"
+            }
+        ]});
+        expect(wrapper.state().items.length).to.equal(2);
+
+        let header = wrapper.childAt(0);
+        expect(header.type()).to.equal(Subheader);
+
+        let child = wrapper.childAt(2);
+        expect(child.type()).to.equal(Item);
+
+        expect(child.props().name).to.equal('Samsung Galaxy S7');
+    })
 });

@@ -14,25 +14,24 @@ class Item extends React.Component {
             <Card>
                 <div className={itemStyle.main}>
                     <CardMedia>
+                        {/* TODO Remove hardcoding */}
                         <img src="https://9to5mac.files.wordpress.com/2015/09/iphone-6s.jpg?quality=82&strip=all&w=838" height="320" width="22" />
                     </CardMedia>
 
                     <div className={itemStyle.details}>
                         <div className={itemStyle.header}>
-                            <CardTitle className={itemStyle.name} title="iPhone 6S" />
-                            <p id="price" className={itemStyle.price}>Rs 500</p>
+                            <CardTitle className={itemStyle.name} title={this.props.name} />
+                            <p id="price" className={itemStyle.price}>{this.props.price}</p>
                             <CardActions className={itemStyle.buy}>
                                 <RaisedButton secondary={true} label="Buy" id="Buy" />
                             </CardActions>
                         </div>
                         <div className={itemStyle.description}>
                             <CardText>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                                {this.props.description}
                         </CardText>
                         </div>
+                        {/* TODO Remove hardcoding */}
                         <p id="sellers" className={itemStyle.sellers}>8 more sellers</p>
                     </div>
                 </div>

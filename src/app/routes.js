@@ -15,6 +15,7 @@ export default (
         <Route path="register" component={Register} />
         <Route path="categories" component={Categories} />
         <Route path="items" component={Items} />
+        {/* TODO Remove this after finishing US#5 */}
         <Route path="item" component={Item} />
     </Route>
 );
