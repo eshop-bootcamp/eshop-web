@@ -1,0 +1,16 @@
+
+
+.label{
+    vertical-align: center
+
+}
+
+.formfield * {
+    vertical-align: middle;
+}
+
+.formlabel {
+ font-size: 1.5em;
+}
+
+
