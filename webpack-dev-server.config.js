@@ -18,7 +18,7 @@ const config = {
     devtool: 'eval-source-map',
     hot: true, // Live-reload
     inline: true,
-    port: process.env.PORT || 3000, // Port Number
+    port: process.env.PORT || 3131, // Port Number
     host: process.env.IP || 'localhost', // Change to '0.0.0.0' for external facing server
   },
   devtool: 'eval-source-map',

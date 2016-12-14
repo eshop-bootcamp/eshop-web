@@ -1,0 +1,44 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    flex: 0.3;
+}
+.name {
+    display: flex;
+    flex-direction: row;
+    flex: 0.6;
+}
+.price {
+    display: flex;
+    flex-direction: row;
+    flex: 0.2;
+    padding: 16px;
+    font-size: 24px;
+}
+.buy {
+    display: flex;
+    flex-direction: row;
+    flex: 0.2;
+    
+}
+.description{
+    display: flex;
+    flex-direction: row;
+    flex: 0.7;
+}
+.sellers{
+    text-align: right;
+}
+
+
