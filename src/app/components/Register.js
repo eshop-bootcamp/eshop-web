@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import 'whatwg-fetch';
 
 const textBoxStyle = {
     width: 400
@@ -15,13 +16,15 @@ const selectStyle = {
     width: 400
 };
 
+const REGISTER_END_POINT = 'https://localhost:8443/user/register/buyer';
+
 class Register extends Component{
     constructor(){
         super();
         this.state = {
             newUser: {
                 name: "",
-                email: "",
+                emailid: "",
                 username: "",
                 password: "",
                 confirmPassword: "",
@@ -33,7 +36,9 @@ class Register extends Component{
                 confirmPassword: false,
                 mobile: false,
                 name: false,
-                email: false
+                email: false,
+                username: false,
+                address: false
             }
         };
     }
@@ -55,7 +60,7 @@ class Register extends Component{
             acc[curr] = !this.state.newUser[curr];
             return acc;
         }, {});
-        validations.confirmPassword = this.state.password !== this.state.confirmPassword;
+        validations.confirmPassword = !(this.state.newUser.password && 0 < this.state.newUser.password.length && this.state.newUser.password === this.state.newUser.confirmPassword);
         validations.mobile = !(this.state.newUser.mobile && this.state.newUser.mobile.length >= 8 && this.state.newUser.mobile.length<= 10);
         let newValidations = Object.assign({}, this.state.validations,validations);
         this.setState({
@@ -65,15 +70,37 @@ class Register extends Component{
         let isInvalid = newValidations.confirmPassword 
                             || newValidations.mobile 
                             || newValidations.name 
-                            || newValidations.email;        
+                            || newValidations.email
+                            || newValidations.username
+                            || newValidations.address;
 
         return isInvalid? false: true;
     }
     onSubmit(){
         if(this.validate()){
-            alert('you can make ajax call');
+            this.registerBuyer();
         }        
     }
+
+    registerBuyer() {
+        fetch(REGISTER_END_POINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(this.state.newUser)
+            })
+            .then(response => {
+                if (response.status == 201) {
+                    alert("Registered Buyer successfully. Go to categories page");
+                } else {
+                    return response.json()
+                }
+            }).then(json => {
+
+            });
+    }
+
     render(){
         return (<div className={registerStyle.main}>
             <Subheader id="header">New User Registration</Subheader>
@@ -89,9 +116,9 @@ class Register extends Component{
             </div>
             <div className={registerStyle.formField}>
                 <TextField
-                    value={this.state.newUser.email}
-                    ref="email"
-                    onChange={this.onChange.bind(this, 'email')}
+                    value={this.state.newUser.emailid}
+                    ref="emailid"
+                    onChange={this.onChange.bind(this, 'emailid')}
                     errorText={this.state.validations.email? 'Mandatory field': ''}
                     style={textBoxStyle}
                     floatingLabelText="Email ID"
@@ -132,6 +159,8 @@ class Register extends Component{
                 <TextField
                     value={this.state.newUser.address}
                     style={textBoxStyle}
+                    onChange={this.onChange.bind(this, 'address')}
+                    errorText={this.state.validations.address? 'Mandatory field': ''}
                     floatingLabelText="Address"
                     multiLine={true}
                     />
