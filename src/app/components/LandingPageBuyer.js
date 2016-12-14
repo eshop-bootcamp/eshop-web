@@ -37,12 +37,13 @@ export default class LandingPageBuyer extends React.Component {
             <center>
                 <label className={landingPageStyle.formlabel}>Categories</label>
                 <DropDownMenu
+                    id="ddlCategory"
                     value={this.state.value}
                     onChange={this.handleChange.bind(this)}
                     autoWidth={true} >
                     {
-                        this.state.categories.map(function (cat) {
-                            return <MenuItem key={cat.id} primaryText={cat.name} value={cat.id} />
+                        this.state.categories.map(function(cat) {
+                            return <MenuItem id={"category_" + cat.id} key={cat.id} primaryText={cat.name} value={cat.id} />
                         })
                     }
                 </DropDownMenu>
