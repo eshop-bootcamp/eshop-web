@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import landingPageStyle from './landingpage.css';
+import config from '../config';
 
 export default class LandingPageBuyer extends React.Component {
 
@@ -13,20 +14,19 @@ export default class LandingPageBuyer extends React.Component {
 
     componentDidMount() {
 
-        fetch('https://localhost:8443/category/getcategories', {mode: 'cors'})
+        fetch(config.baseurl + '/category/getcategories', { mode: 'cors' })
             .then(response => {
                 return response.json();
             }).then(json => {
-              
+
                 this.setState({
-                    categories : json,
+                    categories: json,
                     value: 1
                 })
             });
-
     }
 
-    handleChange (event, index, value) {
+    handleChange(event, index, value) {
         this.setState({ value });
         alert('ID ' + value + ' redirect to items list page');
     }
