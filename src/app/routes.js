@@ -16,8 +16,6 @@ export default (
         <Route path="register" component={Register} />
         <Route path="landingpagebuyer" component={LandingPageBuyer} />
         <Route path="categories" component={Categories} />
-        <Route path="items" component={Items} />
-        {/* TODO Remove this after finishing US#5 */}
-        <Route path="item" component={Item} />
+        <Route path="items/{categoryName}" component={Items} />
     </Route>
 );

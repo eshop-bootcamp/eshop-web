@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Subheader from 'material-ui/Subheader';
 import { List, ListItem } from 'material-ui/List';
 import Item from './Item.js';
 
-export default class Items extends React.Component {
+class Items extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +16,7 @@ export default class Items extends React.Component {
     }
 
     render() {
-        // TODO These items must be children of this Items component.
+        let {params} = this.props;
         let list = this.state.items.map((item) =>
             <Item name={item.name}
                 description={item.description}
@@ -24,10 +24,11 @@ export default class Items extends React.Component {
         );
         return (
             <div>
-                {/* TODO Remove hardcoding */}
-                <Subheader id="header"> Category: Electronics</Subheader>
+                <Subheader id="header"> Category: {params ? params.categoryName : ''}</Subheader>
                 {list}
             </div>
         );
     }
 }
+
+export default Items;

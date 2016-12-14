@@ -8,7 +8,7 @@ let wrapper;
 
 describe('<Items />', () => {
     beforeEach(() => {
-        wrapper = shallow(<Items/>);
+        wrapper = shallow(<Items params={{categoryName: "Electronics"}}/>);
     });
 
     it('should render properly', () => {
@@ -16,7 +16,11 @@ describe('<Items />', () => {
     });
 
     it('should have the word category in its title', () => {
-        expect(wrapper.find(Subheader).node.props.children).to.contain('Category');
+        expect(wrapper.find(Subheader).node.props.children[0]).to.contain('Category');
+    });
+
+    it('should have the expected category', () => {
+        expect(wrapper.find(Subheader).node.props.children[1]).to.contain('Electronics');        
     });
 });
 
