@@ -1,9 +1,9 @@
 import React from 'react';
-import 'whatwg-fetch';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import landingPageStyle from './landingpage.css';
 import config from '../config';
+import HttpUtil from '../HttpUtil';
 
 export default class LandingPageBuyer extends React.Component {
 
@@ -13,12 +13,8 @@ export default class LandingPageBuyer extends React.Component {
     }
 
     componentDidMount() {
-
-        fetch(config.baseurl + '/category/getcategories', { mode: 'cors' })
-            .then(response => {
-                return response.json();
-            }).then(json => {
-
+        HttpUtil.GET('/categories')
+            .then(json => {
                 this.setState({
                     categories: json,
                     value: 1
@@ -42,7 +38,7 @@ export default class LandingPageBuyer extends React.Component {
                     onChange={this.handleChange.bind(this)}
                     autoWidth={true} >
                     {
-                        this.state.categories.map(function(cat) {
+                        this.state.categories.map(function (cat) {
                             return <MenuItem id={"category_" + cat.id} key={cat.id} primaryText={cat.name} value={cat.id} />
                         })
                     }
