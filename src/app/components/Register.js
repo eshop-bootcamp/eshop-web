@@ -8,7 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import 'whatwg-fetch';
-import config from './config';
+import config from '../config';
 
 const textBoxStyle = {
     width: 400
