@@ -9,24 +9,24 @@ export default class LandingPageBuyer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: 0, categories: [] }
+        this.state = { value: 0, categories: [] };
+        this.defaultCategoryId = -1;
     }
 
     componentDidMount() {
         HttpUtil.GET('/categories')
             .then(json => {
-                this.setState({
-                    categories: json,
-                    value: 1
-                })
+                json.splice(0, 0, { id: this.defaultCategoryId, name: "--- Please select ---" });
+                this.setState({ categories: json, value: this.defaultCategoryId });
             });
     }
 
     handleChange(event, index, value) {
         this.setState({ value });
-        alert('ID ' + value + ' redirect to items list page');
+        if (value !== this.defaultCategoryId) {
+            this.props.router.push('/items/' + value);
+        }
     }
-
 
     render() {
         return (<div className={landingPageStyle.formfield} >
