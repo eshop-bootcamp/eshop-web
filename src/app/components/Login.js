@@ -6,6 +6,8 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import HttpUtil from '../HttpUtil';
 import Auth from '../Auth';
+import {Link} from 'react-router';
+
 import {
   Step,
   Stepper,
@@ -62,7 +64,7 @@ class Login extends Component {
                             secondary={true}
                             onClick={this.onSubmit.bind(this)}
                              />
-
+                        <Link className={loginStyle.registerLink} to="register">Register</Link>
                     </div>
             </div>
         )

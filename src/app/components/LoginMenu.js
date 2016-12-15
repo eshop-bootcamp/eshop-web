@@ -7,6 +7,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import loginMenuStyle from './loginmenu.css';
 import Auth from '../Auth';
+import {Link} from 'react-router';
 
 const textStyle = {
     color: purple500
@@ -33,13 +34,14 @@ class LoginMenu extends Component{
     }
     onLogout(){
         Auth.logout();
-        this.props.router.push('/login');
+        window.location.href="/#/login";
     }
     render(){
         let content;
         if(this.state.isLoggedIn){
             content = (
                 <div>
+                <Link className={loginMenuStyle.link} to="categories">Categories</Link>
                 <span className={loginMenuStyle.welcomeLabel} style={textStyle}>Welcome</span>
                 <FontIcon color={purple500} className="material-icons">face</FontIcon>
                 <IconMenu
@@ -58,6 +60,7 @@ class LoginMenu extends Component{
         else{
             content = (
                 <div>
+                    <Link className={loginMenuStyle.link} to="register">Register</Link>
                     <span className={loginMenuStyle.welcomeLabelGuest} style={textStyle}>Welcome Guest</span>
                 </div>
             )
