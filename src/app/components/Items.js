@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Subheader from 'material-ui/Subheader';
 import Item from './Item.js';
+import HttpUtil from '../HttpUtil'
 
 class Items extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class Items extends Component {
     };
 
     componentDidMount() {
-        HttpUtil.GET('/categories/'+ params.categoryId + '/items').then(json => {
+        HttpUtil.GET('/categories/'+ this.props.params.categoryId + '/items').then(json => {
               this.setState({items: json});
             }
         );
