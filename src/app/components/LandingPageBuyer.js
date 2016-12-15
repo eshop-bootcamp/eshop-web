@@ -14,20 +14,10 @@ export default class LandingPageBuyer extends React.Component {
     }
 
     componentDidMount() {
-<<<<<<< 55c4d7c082c6d551884e8d019827016dc939c4f2
         HttpUtil.GET('/categories')
             .then(json => {
                 json.splice(0, 0, { id: this.defaultCategoryId, name: "--- Please select ---" });
                 this.setState({ categories: json, value: this.defaultCategoryId });
-=======
-
-        HttpUtil.GET('/categories')
-            .then(json => {
-                this.setState({
-                    categories: json,
-                    value: 1
-                })
->>>>>>> [US#03] | WIP - Integrating Login with Service
             });
     }
 
