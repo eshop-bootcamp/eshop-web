@@ -33,9 +33,6 @@ class Main extends Component {
           <Paper className={mainStyle.contentArea} zDepth={1} rounded={false}>
             {this.props.children}
           </Paper>
-          <div className={mainStyle.footer}>
-            This is the footer
-          </div>
         </div>
       </MuiThemeProvider>
     );
