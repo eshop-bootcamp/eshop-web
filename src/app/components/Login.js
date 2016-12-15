@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import HttpUtil from '../HttpUtil';
+import Auth from '../Auth';
 import {
   Step,
   Stepper,
@@ -19,19 +20,16 @@ class Login extends Component {
             finished: false
         };
     }
-    componentDidMount(){
-        HttpUtil.GET('/category/getcategories')
-            .then((data) => {console.log(data);})
-    }
     onSubmit(){
-        let username = ReactDOM.findDOMNode(this.refs.userName).value;
-        let password = ReactDOM.findDOMNode(this.refs.password).value;
+        let username = ReactDOM.findDOMNode(this.refs.username).querySelector('input').value;
+        let password = ReactDOM.findDOMNode(this.refs.password).querySelector('input').value;
         HttpUtil.POST('/login',{
             username,
             password
-        }).then((data) => {
-            if(data.user && data.user.type === 'buyer'){
-                //redirect to buyer landing page
+        }).then((data) => { 
+            if(data.validUser){
+                Auth.authenticate(data.token, data.validUser);
+                this.props.router.push('/landingpagebuyer');
             }
             else{
                 //redirect to seller landing page

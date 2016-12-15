@@ -13,8 +13,8 @@ const textStyle = {
 };
 
 class LoginMenu extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             isLoggedIn: Auth.isAuthenticated()
         };
@@ -26,11 +26,14 @@ class LoginMenu extends Component{
     componentWillUnmount(){
         Auth.removeChangeListener(this._onChange);
     }
-    
     _onChange(){
         this.setState({
             isLoggedIn: Auth.isAuthenticated()
         });
+    }
+    onLogout(){
+        Auth.logout();
+        this.props.router.push('/login');
     }
     render(){
         let content;
@@ -48,7 +51,7 @@ class LoginMenu extends Component{
                     targetOrigin={{horizontal: 'right', vertical: 'top'}}
                     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                 >
-                    <MenuItem primaryText="Sign out" />
+                    <MenuItem primaryText="Sign out" onClick={this.onLogout.bind(this)} />
                 </IconMenu>
             </div>)
         }
