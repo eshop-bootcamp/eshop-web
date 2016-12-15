@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import 'whatwg-fetch';
+import config from './config';
 
 const textBoxStyle = {
     width: 400
@@ -17,7 +18,6 @@ const selectStyle = {
     width: 400
 };
 
-const REGISTER_END_POINT = 'https://localhost:8443/user/register/buyer';
 
 class Register extends Component {
     constructor() {
@@ -129,7 +129,8 @@ class Register extends Component {
     }
 
     registerBuyer() {
-        fetch(REGISTER_END_POINT, {
+        let url = "/user/register/buyer"
+        fetch(config.baseurl + url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
@@ -138,7 +139,8 @@ class Register extends Component {
         })
             .then(response => {
                 if (response.status == 201) {
-                    alert("Registered Buyer successfully. Go to categories page");
+                    alert("Registered Buyer successfully. Please login.");
+                    this.props.router.push('/login');
                 } else {
                     return response.json()
                 }
