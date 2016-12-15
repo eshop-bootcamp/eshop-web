@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Subheader from 'material-ui/Subheader';
-import { List, ListItem } from 'material-ui/List';
 import Item from './Item.js';
 
 class Items extends Component {
@@ -12,13 +11,18 @@ class Items extends Component {
     };
 
     componentDidMount() {
-        // fetch from URL
+        HttpUtil.GET('/categories/'+ params.categoryId + '/items').then(json => {
+              this.setState({items: json});
+            }
+        );
     }
 
     render() {
         let {params} = this.props;
-        let list = this.state.items.map((item) =>
-            <Item name={item.name}
+        let list = this.state.items.map((item,i) =>
+            <Item
+                key={i}
+                name={item.name}
                 description={item.description}
                 price={item.price} />
         );

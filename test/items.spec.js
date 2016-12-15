@@ -8,7 +8,11 @@ let wrapper;
 
 describe('<Items />', () => {
     beforeEach(() => {
-        wrapper = shallow(<Items params={{categoryName: "Electronics"}}/>);
+        let params = {
+            categoryId: 1,
+            categoryName: "Electronics"
+        };
+        wrapper = shallow(<Items params={params}/>);
     });
 
     it('should render properly', () => {
@@ -19,8 +23,8 @@ describe('<Items />', () => {
         expect(wrapper.find(Subheader).node.props.children[0]).to.contain('Category');
     });
 
-    it('should have the expected category', () => {
-        expect(wrapper.find(Subheader).node.props.children[1]).to.contain('Electronics');        
+    it('should have the expected category id', () => {
+        expect(wrapper.find(Subheader).node.props.children[1]).to.contain("Electronics");
     });
 });
 

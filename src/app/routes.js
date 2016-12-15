@@ -24,9 +24,9 @@ export default (
         <IndexRoute component={Login} />
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
-        <Route path="landing" component={Landing} onEnter={requireAuth} />        
+        <Route path="landing" component={Landing} onEnter={requireAuth} />
         <Route path="landingpagebuyer" component={LandingPageBuyer} onEnter={requireAuth} />
         <Route path="categories" component={Categories} onEnter={requireAuth} />
-        <Route path="items/{categoryName}" component={Items} onEnter={requireAuth}/>
+        <Route path="items/:categoryId" component={Items} onEnter={requireAuth}/>
     </Route>
 );
