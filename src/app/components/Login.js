@@ -27,8 +27,8 @@ class Login extends Component {
             username,
             password
         }).then((data) => { 
-            if(data.validUser){
-                Auth.authenticate(data.token, data.validUser);
+            if(data.userDetails){
+                Auth.authenticate(data.token, data.userDetails);
                 this.props.router.push('/landingpagebuyer');
             }
             else{
@@ -51,6 +51,7 @@ class Login extends Component {
                         <div className={loginStyle.loginFormField}>
                             <TextField 
                             id="password"
+                            type="password"
                             ref="password"
                             floatingLabelText="Password"
                             />
