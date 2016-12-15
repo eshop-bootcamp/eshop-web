@@ -41,7 +41,7 @@ class LoginMenu extends Component{
         if(this.state.isLoggedIn){
             content = (
                 <div>
-                <Link className={loginMenuStyle.link} to="categories">Categories</Link>
+                <Link className={loginMenuStyle.link} to="landingpagebuyer">Categories</Link>
                 <span className={loginMenuStyle.welcomeLabel} style={textStyle}>Welcome</span>
                 <FontIcon color={purple500} className="material-icons">face</FontIcon>
                 <IconMenu
