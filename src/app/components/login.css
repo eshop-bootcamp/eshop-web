@@ -1,11 +1,5 @@
-.main{
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-}
 
 .login{
-    flex: 1;
     margin-right: 50px;
 }
 
@@ -19,10 +13,4 @@
 
 .loginFormField{
     margin-bottom:10px;
-}
-
-@media (max-width: 600px) {
-    .main{
-        flex-direction: column;
-    }    
 }

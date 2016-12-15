@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import loginStyle from './login.css';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import HttpUtil from '../HttpUtil';
 import {
   Step,
   Stepper,
@@ -14,48 +16,54 @@ class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            finished: false,
-            stepIndex: 0,
+            finished: false
         };
-
     }
-
+    componentDidMount(){
+        HttpUtil.GET('/category/getcategories')
+            .then((data) => {console.log(data);})
+    }
+    onSubmit(){
+        let username = ReactDOM.findDOMNode(this.refs.userName).value;
+        let password = ReactDOM.findDOMNode(this.refs.password).value;
+        HttpUtil.POST('/login',{
+            username,
+            password
+        }).then((data) => {
+            if(data.user && data.user.type === 'buyer'){
+                //redirect to buyer landing page
+            }
+            else{
+                //redirect to seller landing page
+            }
+        });
+    }
     render(){    
         return (
-            <div className={loginStyle.main}>
-                <Paper className={loginStyle.login} zDepth={5}>
-                    
+            <div className={loginStyle.main}>                    
                     <Subheader inset={true}>Login</Subheader>
                     <div className={loginStyle.loginForm}>
                         <div className={loginStyle.loginFormField}>
                             <TextField id="username"
+                                ref="username"
                                 floatingLabelText="Username"
                             />
                         </div>
                         <div className={loginStyle.loginFormField}>
-                            <TextField id="password"
+                            <TextField 
+                            id="password"
+                            ref="password"
                             floatingLabelText="Password"
                             />
                         </div>
-                        <RaisedButton id="login_button" label="Login" secondary={true} />
+                        <RaisedButton 
+                            id="login_button" 
+                            label="Login" 
+                            secondary={true}
+                            onClick={this.onSubmit.bind(this)}
+                             />
 
                     </div>
-                </Paper>
-                <Paper className={loginStyle.register} zDepth={5}>
-                    <Subheader>Register</Subheader>
-
-                    <Stepper activeStep={this.state.stepIndex}>
-                        <Step>
-                            <StepLabel>Enter Profile Info</StepLabel>
-                        </Step>
-                        <Step>
-                            <StepLabel>Seller/Buyer</StepLabel>
-                        </Step>
-                        <Step>
-                            <StepLabel>Finish</StepLabel>
-                        </Step>
-                        </Stepper>
-                </Paper>
             </div>
         )
     }
