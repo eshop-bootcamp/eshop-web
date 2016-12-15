@@ -55,7 +55,7 @@ class LoginMenu extends Component{
         else{
             content = (
                 <div>
-                    <span style={textStyle}>Welcome</span>
+                    <span className={loginMenuStyle.welcomeLabelGuest} style={textStyle}>Welcome Guest</span>
                 </div>
             )
         }

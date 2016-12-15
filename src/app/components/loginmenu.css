@@ -4,3 +4,10 @@
     top: -5px;
     font-size: 16px;
 }
+
+.welcomeLabelGuest{
+    position: relative;
+    padding-right: 10px;
+    top: 15px;
+    font-size: 16px;
+}

@@ -18,7 +18,7 @@ const Auth =  Object.assign(EventEmitter.prototype,{
     isAuthenticated: () => {
         // let userToken = localStorage.getItem("token");
         // return !!userToken;
-        return true;
+        return false;
     },
     getUserDetails: () => {
         let userDetails = localStorage.getItem('userDetails');

@@ -45,6 +45,7 @@ class Login extends Component {
                     <div className={loginStyle.loginForm}>
                         <div className={loginStyle.loginFormField}>
                             <TextField id="username"
+                                autoFocus
                                 ref="username"
                                 floatingLabelText="Username"
                             />
