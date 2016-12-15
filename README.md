@@ -32,6 +32,31 @@ And, then within the project folder, try the following commands
 To start test, you can do the following commands
 
 	$ yarn test
+
+### API Calls
+
+<b>HttpUtil</b> is created for making API calls. example usage is given below
+
+#### GET Calls
+```javascript
+import HttpUtil from '../HttpUtil';
+
+HttpUtil.GET('/category/getcategories')
+            .then((data) => {console.log(data);})
+```
+
+#### POST Calls
+```javascript
+import HttpUtil from '../HttpUtil';
+
+        let someData = {
+            username: "trial",
+            password: "trial"
+        };
+        HttpUtil.POST('/login',someData).then((data) => {
+            //use the data
+        });
+```     
     
 ### Project Structure
 
