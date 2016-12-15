@@ -40,7 +40,7 @@ export default {
         
         let getUrl = config.baseurl + url;
         console.log(getUrl);
-        $.ajax({
+        return $.ajax({
             url: getUrl,
             headers: customHeaders
         }).then(data => data);
